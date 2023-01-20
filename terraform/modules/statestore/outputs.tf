@@ -11,12 +11,12 @@ output "kubeconfig_put_policy" {
   value = data.aws_iam_policy_document.setter.json
 }
 
-outut "token" {
+output "token" {
   value = {
-    bucket = aws_s3_bucket_object.token.bucket
-    object = aws_s3_bucket_object.token.id
+    bucket          = aws_s3_bucket_object.token.bucket
+    object          = aws_s3_bucket_object.token.id
     policy_document = data.aws_iam_policy_document.getter.json
-    bucket_arn = aws_s3_bucket_object.bucket.arn
+    bucket_arn      = aws_s3_bucket_object.bucket.arn
   }
 }
 

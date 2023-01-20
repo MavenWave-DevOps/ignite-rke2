@@ -1,6 +1,6 @@
 
 variable "vpc_id" {
-  type = string
+  type        = string
   description = "VPC for RKE2 cluster"
 }
 
@@ -14,41 +14,41 @@ variable "subnets" {
 
 variable "internal" {
   default = true
-  type = bool
+  type    = bool
 }
 
 variable "enable_cross_zone_load_balancing" {
   default = true
-  type = bool
+  type    = bool
 }
 
 variable "cp_port" {
-  type = number
+  type    = number
   default = 6443
 }
 
 variable "cp_ingress_cidr_blocks" {
-  type = list(string)
+  type    = list(string)
   default = ["0.0.0.0/0"]
 }
 
 variable "cp_supervisor_port" {
-  type = number
+  type    = number
   default = 9345
 }
 
 variable "cp_supervisor_ingress_cidr_blocks" {
-  type = list(string)
+  type    = list(string)
   default = ["0.0.0.0/0"]
 }
 
 variable "tags" {
-  type = map(string)
+  type    = map(string)
   default = {}
 }
 
 variable "access_logs_bucket" {
-  type = string
+  type    = string
   default = "disabled"
 }
 

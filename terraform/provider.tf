@@ -6,12 +6,12 @@ terraform {
     }
 
     random = {
-      source = "hashicorp/random"
+      source  = "hashicorp/random"
       version = "~> 3.1.0"
     }
 
     kubernetes = {
-      source = "hashicorp/cloudinit"
+      source  = "hashicorp/cloudinit"
       version = "~> 2.2.0"
     }
   }
@@ -38,6 +38,6 @@ provider "aws" {
 data "aws_availability_zones" "available" {}
 
 resource "random_string" "suffix" {
-  length = 8
+  length  = 8
   special = false
 }

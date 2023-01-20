@@ -1,7 +1,7 @@
 
 locals {
   uname = var.unique_suffix ? lower("${var.cluster_name}-${random_string.uid.result}") : lower(var.cluster_name)
-  
+
   default_tags = {
     "ClusterType" = "rke2",
   }
