@@ -1,4 +1,9 @@
 
+variable "region" {
+  default = "us-west-1"
+  type = string
+}
+
 variable "tags" {
   description = "Map of tags to all resources created"
   default     = {}
