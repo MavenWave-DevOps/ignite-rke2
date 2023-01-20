@@ -1,8 +1,9 @@
 
 module "cp_lb" {
   source  = "./modules/elb"
-  vpc_id  = locals.vpc_id
-  subnets = locals.subnets
+  name    = local.uname
+  vpc_id  = local.vpc_id
+  subnets = local.subnets
 
   enable_cross_zone_load_balancing = var.controlplane_enable_cross_zone_load_balancing
   internal                         = var.controlplane_internal
