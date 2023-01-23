@@ -4,13 +4,13 @@ variable "name" {
 }
 
 variable "tags" {
-  type = map(string)
+  type    = map(string)
   default = {}
 }
 
 variable "permissions_boundary" {
   description = "If provided, all IAM roles will be created with this permissions boundary attached."
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 

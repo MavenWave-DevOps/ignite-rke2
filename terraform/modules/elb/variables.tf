@@ -23,8 +23,8 @@ variable "enable_cross_zone_load_balancing" {
 }
 
 variable "controlplane_name" {
-  default = "rke2"
-  type = string
+  default     = "rke2"
+  type        = string
   description = "Name of controlplane"
 }
 
