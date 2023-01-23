@@ -6,7 +6,7 @@ locals {
     "ClusterType" = "rke2",
   }
 
-  vpc_id = module.ignite-network.id
+  vpc_id = module.ignite-network.network_id
 
   subnets = [
     module.ignite-network.private_subnet_id,
