@@ -22,6 +22,12 @@ variable "enable_cross_zone_load_balancing" {
   type    = bool
 }
 
+variable "controlplane_name" {
+  default = "rke2"
+  type = string
+  description = "Name of controlplane"
+}
+
 variable "cp_port" {
   type    = number
   default = 6443

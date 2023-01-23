@@ -16,7 +16,7 @@ output "token" {
     bucket          = aws_s3_bucket_object.token.bucket
     object          = aws_s3_bucket_object.token.id
     policy_document = data.aws_iam_policy_document.getter.json
-    bucket_arn      = aws_s3_bucket_object.bucket.arn
+    bucket_arn      = aws_s3_object.bucket.arn
   }
 }
 
