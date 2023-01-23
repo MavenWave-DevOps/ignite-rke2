@@ -11,7 +11,7 @@ resource "aws_security_group_rule" "apiserver" {
   from_port         = var.cp_port
   to_port           = var.cp_port
   protocol          = "tcp"
-  security_group_id = aws_security_group.conrtolplane.id
+  security_group_id = aws_security_group.controlplane.id
   type              = "ingress"
 
   cidr_blocks = var.cp_ingress_cidr_blocks
@@ -25,7 +25,7 @@ resource "aws_security_group_rule" "supervisor" {
   from_port         = var.cp_supervisor_port
   to_port           = var.cp_supervisor_port
   protocol          = "tcp"
-  security_group_id = aws_security_group.conrtolplane.id
+  security_group_id = aws_security_group.controlplane.id
   type              = "ingress"
 
   cidr_blocks = var.cp_supervisor_ingress_cidr_blocks
@@ -39,7 +39,7 @@ resource "aws_security_group_rule" "egress" {
   from_port         = "0"
   to_port           = "0"
   protocol          = "-1"
-  security_group_id = aws_security_group.conrtolplane.id
+  security_group_id = aws_security_group.controlplane.id
   type              = "egress"
 
   cidr_blocks = ["0.0.0.0/0"]
