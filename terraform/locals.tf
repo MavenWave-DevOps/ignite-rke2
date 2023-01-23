@@ -10,7 +10,6 @@ locals {
 
   subnets = [
     module.ignite-network.private_subnet_id,
-    module.ignite-network.failover_private_subnet_id,
   ]
 
 }
