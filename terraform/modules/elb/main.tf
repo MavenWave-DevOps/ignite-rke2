@@ -17,7 +17,7 @@ resource "aws_security_group_rule" "apiserver" {
   cidr_blocks = var.cp_ingress_cidr_blocks
 
   depends_on = [
-    aws_security_group.controlplane,
+    module.aws_security_group.controlplane,
   ]
 }
 
@@ -31,7 +31,7 @@ resource "aws_security_group_rule" "supervisor" {
   cidr_blocks = var.cp_supervisor_ingress_cidr_blocks
 
   depends_on = [
-    aws_security_group.controlplane,
+    module.aws_security_group.controlplane,
   ]
 }
 
@@ -45,7 +45,7 @@ resource "aws_security_group_rule" "egress" {
   cidr_blocks = ["0.0.0.0/0"]
 
   depends_on = [
-    aws_security_group.controlplane,
+    module.aws_security_group.controlplane,
   ]
 }
 
@@ -88,7 +88,7 @@ resource "aws_elb" "controlplane" {
   tags = merge({}, var.tags)
 
   depends_on = [
-    aws_security_group.controlplane,
+    module.aws_security_group.controlplane,
   ]
 }
 
