@@ -12,6 +12,39 @@ module "init" {
   agent = false
 }
 
+data "template_cloudinit_config" "config" {
+  gzip          = true
+  base64_encode = true
+
+  # Main cloud-init config file
+  part {
+    filename     = "cloud-config.yaml"
+    content_type = "text/cloud-config"
+    content = templatefile("${path.module}/modules/nodepool/files/cloud-config.yaml", {
+      ssh_authorized_keys = var.ssh_authorized_keys
+    })
+  }
+
+  dynamic "part" {
+    for_each = var.download ? [1] : []
+    content {
+      filename     = "00_download.sh"
+      content_type = "text/x-shellscript"
+      content = templatefile("${path.module}/modules/common/download.sh", {
+        # Must not use `version` here since that is reserved
+        rke2_version = var.rke2_version
+        type         = "server"
+      })
+    }
+  }
+
+  part {
+    filename     = "01_rke2.sh"
+    content_type = "text/x-shellscript"
+    content      = module.init.templated
+  }
+}
+
 data "aws_iam_policy_document" "aws_required" {
   count = var.iam_instance_profile == "" ? 1 : 0
   
