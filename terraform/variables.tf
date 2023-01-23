@@ -67,5 +67,45 @@ variable "block_device_mappings" {
   }
 }
 
+variable "rke2_version" {
+  description = "Version to use for RKE2 server nodes"
+  type        = string
+  default     = "v1.19.7+rke2r1"
+}
 
+variable "rke2_config" {
+  description = "Server pool additional configuration passed as rke2 config file, see https://docs.rke2.io/install/install_options/server_config for full list of options"
+  type        = string
+  default     = ""
+}
+
+variable "download" {
+  description = "Toggle best effort download of rke2 dependencies (rke2 and aws cli), if disabled, dependencies are assumed to exist in $PATH"
+  type        = bool
+  default     = true
+}
+
+variable "pre_userdata" {
+  description = "Custom userdata to run immediately before rke2 node attempts to join cluster, after required rke2, dependencies are installed"
+  type        = string
+  default     = ""
+}
+
+variable "post_userdata" {
+  description = "Custom userdata to run immediately after rke2 node attempts to join cluster"
+  type        = string
+  default     = ""
+}
+
+variable "enable_ccm" {
+  description = "Toggle enabling the cluster as aws aware, this will ensure the appropriate IAM policies are present"
+  type        = bool
+  default     = false
+}
+
+variable "wait_for_capacity_timeout" {
+  description = "How long Terraform should wait for ASG instances to be healthy before timing out."
+  type        = string
+  default     = "10m"
+}
 
