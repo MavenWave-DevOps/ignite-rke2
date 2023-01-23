@@ -27,6 +27,10 @@ resource "aws_s3_bucket_object" "token" {
   content_type           = "text/plain"
   content                = var.token
   server_side_encryption = "aws:kms"
+
+  depends_on = [
+    resource.aws_s3_bucket.bucket,
+  ]
 }
 
 data "aws_iam_policy_document" "getter" {
