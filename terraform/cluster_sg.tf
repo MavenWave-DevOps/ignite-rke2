@@ -2,7 +2,7 @@
 resource "aws_security_group" "cluster" {
   name = "${local.uname}-rke2-cluster"
   description = "Shared ${local.uname} cluster security group"
-  vpc_id = var.vpc_id
+  vpc_id = local.vpc_id
   
   tags = merge({
     "shared" = "true",

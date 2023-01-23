@@ -46,4 +46,20 @@ variable "controlplane_allowed_cidrs" {
   default     = ["0.0.0.0/0"]
 }
 
+variable "iam_instance_profile" {
+  description = "Profile for k8s access to be created"
+  type = string
+  default = null
+}
+
+variable "iam_permissions_boundary" {
+  description = "Server pool block device mapping configuration"
+  type = map(string)
+  default = {
+    "size" = 30
+    "encrypted" = false
+  }
+}
+
+
 

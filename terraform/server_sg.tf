@@ -1,7 +1,7 @@
 
 resource "aws_security_group" "server" {
   name = "${local.uname}-rke2-server"
-  vpc_id = var.vpc_id
+  vpc_id = local.vpc_id
   description = "${local.uname} rke2 server node pool"
   tags = merge(local.default_tags, var.tags)
 }
