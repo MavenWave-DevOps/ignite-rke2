@@ -30,7 +30,7 @@ resource "aws_iam_role_policy" "get_token" {
   
   name = "${local.uname}-rke2-server-get-token"
   role = module.iam[count.index].role
-  policy = data.statestore.token.policy_document
+  policy = module.statestore.token.policy_document
 }
 
 resource "aws_iam_role_policy" "put_kubeconfig" {
@@ -38,6 +38,6 @@ resource "aws_iam_role_policy" "put_kubeconfig" {
   
   name = "${local.uname}-rke2-server-put-kubeconfig"
   role = module.iam[count.index].role
-  policy = data.statestore.kubeconfig_put_policy
+  policy = module.statestore.kubeconfig_put_policy
 }
 

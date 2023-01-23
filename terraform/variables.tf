@@ -109,3 +109,9 @@ variable "wait_for_capacity_timeout" {
   default     = "10m"
 }
 
+variable "ssh_authorized_keys" {
+  description = "Server pool list of public keys to add as authorized ssh keys"
+  type        = list(string)
+  default     = []
+}
+
