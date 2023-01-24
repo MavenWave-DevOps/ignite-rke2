@@ -106,7 +106,7 @@ variable "enable_ccm" {
 variable "wait_for_capacity_timeout" {
   description = "How long Terraform should wait for ASG instances to be healthy before timing out."
   type        = string
-  default     = "10m"
+  default     = "20m"
 }
 
 # variable "ssh_authorized_keys" {
