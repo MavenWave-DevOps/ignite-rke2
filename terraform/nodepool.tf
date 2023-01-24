@@ -1,7 +1,7 @@
 
 data "aws_ami" "rhel8" {
   most_recent = true
-  owners = ["aws-marketplace"]
+  owners = ["219670896067"]
 
   filter {
     name = "name"
