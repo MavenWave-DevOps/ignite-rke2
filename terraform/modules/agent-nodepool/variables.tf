@@ -103,7 +103,7 @@ variable "rke2_config" {
 variable "enable_ccm" {
   description = "Toggle enabling the cluster as aws aware, this will ensure the appropriate IAM policies are present"
   type = bool
-  default = fals
+  default = false
 }
 
 variable "enable_autoscaler" {
