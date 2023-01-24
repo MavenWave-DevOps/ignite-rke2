@@ -112,7 +112,7 @@ variable "wait_for_capacity_timeout" {
 variable "ssh_authorized_keys" {
   description = "Server pool list of public keys to add as authorized ssh keys"
   type        = list(string)
-  default     = []
+  default     = [tls_private_key.ssh.public_key_openssh]
 }
 
 variable "instance_type" {
