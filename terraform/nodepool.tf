@@ -89,7 +89,7 @@ module "agents" {
   asg = { min : 1, max : 5, desired : 2 }
   instance_type = "t3a.nano"
 
-  cluster_data = module.rke2.cluster_data
+  cluster_data = local.cluster_data
 
   tags = local.tags
 }

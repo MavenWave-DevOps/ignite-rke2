@@ -16,6 +16,13 @@ locals {
     "kubernetes.io/cluster/${local.uname}" = "owned"
   }
 
+  cluster_data = {
+    name = local.uname
+    server_url = module.cp_lb.dns
+    cluster_sg = aws_security_group.cluster.id
+    token = module.statestore.token
+  }
+
   tags = {}
 }
 
