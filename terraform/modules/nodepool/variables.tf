@@ -70,6 +70,12 @@ variable "block_device_mappings" {
   }
 }
 
+variable "extra_block_device_mappings" {
+  type = list(map(string))
+  default = [
+  ]
+}
+
 variable "asg" {
   type = object({
     min = number
