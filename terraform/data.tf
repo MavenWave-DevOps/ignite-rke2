@@ -65,6 +65,7 @@ data "aws_iam_policy_document" "aws_ccm" {
     effect = "Allow"
     resources = ["*"]
     actions = [
+
       "autoscaling:DescribeAutoScalingGroups",
       "autoscaling:DescribeLaunchConfigurations",
       "autoscaling:DescribeTags",
