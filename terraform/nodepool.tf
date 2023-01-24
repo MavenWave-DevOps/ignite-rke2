@@ -39,8 +39,8 @@ module "rke2" {
   spot                      = var.spot
   load_balancers            = [module.cp_lb.name]
   wait_for_capacity_timeout = var.wait_for_capacity_timeout
-  ssh_authorized_keys = [tls_private_key.ssh.public_key_openssh]
-  controlplane_internal = false
+  # ssh_authorized_keys = [tls_private_key.ssh.public_key_openssh]
+  # controlplane_internal = false
 
   userdata             = data.template_cloudinit_config.config.rendered
   iam_instance_profile = var.iam_instance_profile == "" ? module.iam[0].iam_instance_profile : var.iam_instance_profile
