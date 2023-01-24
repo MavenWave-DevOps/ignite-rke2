@@ -49,7 +49,7 @@ resource "aws_launch_template" "template" {
 
 resource "aws_autoscaling_group" "asg" {
   name = "${var.name}-rke2-nodepool"
-  vpc_zone_idnetifier = var.subnets
+  vpc_zone_identifier = var.subnets
 
   min_size = var.asg.min
   max_size = var.asg.max
