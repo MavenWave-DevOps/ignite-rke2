@@ -115,3 +115,27 @@ variable "ssh_authorized_keys" {
   default     = []
 }
 
+variable "instance_type" {
+  type = string
+  default = "t3a.nano"
+  description = "Server pool instance type"
+}
+
+variable "extra_security_group_ids" {
+  type = list(string)
+  defualt = []
+  description = "List of additional secuirty group ids"
+}
+
+variable "spot" {
+  description = "Toggle spot requests for server pool"
+  type = bool
+  default = false
+}
+
+variable "servers" {
+  description = "Number of servers to create"
+  type = number
+  default = 1
+}
+

@@ -12,5 +12,6 @@ locals {
     module.ignite-network.private_subnet_id,
   ]
 
+  tags = []
 }
 
