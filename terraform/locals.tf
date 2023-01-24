@@ -16,6 +16,6 @@ locals {
     "kubernetes.io/cluster/${local.uname}" = "owned"
   }
 
-  tags = []
+  tags = {}
 }
 
