@@ -18,13 +18,12 @@ resource "aws_iam_role_policy" "aws_required" {
 }
 
 resource "aws_iam_role_policy" "aws_ccm" {
-  count = var.iam_instance_profile == "" ? 1 : 0
-  
-  name = "${local.uname}-rke2-server-aws-ccm"
-  role = module.iam[count.index].role
+  count = var.iam_instance_profile == "" && var.enable_ccm ? 1 : 0
+
+  name   = "${local.uname}-rke2-server-aws-ccm"
+  role   = module.iam[count.index].role
   policy = data.aws_iam_policy_document.aws_ccm[count.index].json
 }
-
 resource "aws_iam_role_policy" "get_token" {
   count = var.iam_instance_profile == "" ? 1 : 0
   
