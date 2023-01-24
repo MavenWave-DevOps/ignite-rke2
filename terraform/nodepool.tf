@@ -87,7 +87,7 @@ module "agents" {
   ssh_authorized_keys = [tls_private_key.ssh.public_key_openssh]
   spot = true
   asg = { min : 1, max : 5, desired : 2 }
-  instance_type = "t3a.nano"
+  instance_type = "t3a.medium"
 
   cluster_data = local.cluster_data
 
