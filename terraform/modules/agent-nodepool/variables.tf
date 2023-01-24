@@ -5,6 +5,11 @@ variable "name" {
 }
 
 variable "vpc_id" {
+  description = "VPC of cluster"
+  type = string
+}
+
+variable "subnets" {
   description = "List of subnets IDs to create resources in"
   type = list(string)
 }
