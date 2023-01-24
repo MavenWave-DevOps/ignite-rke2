@@ -122,9 +122,9 @@ variable "instance_type" {
 }
 
 variable "extra_security_group_ids" {
-  type = list(string)
-  defualt = []
   description = "List of additional secuirty group ids"
+  type = list(string)
+  default = []
 }
 
 variable "spot" {
