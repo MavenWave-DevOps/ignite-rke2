@@ -117,7 +117,7 @@ variable "ssh_authorized_keys" {
 
 variable "instance_type" {
   type = string
-  default = "t3a.nano"
+  default = "t3a.medium"
   description = "Server pool instance type"
 }
 
