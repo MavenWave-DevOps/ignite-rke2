@@ -10,7 +10,7 @@ output "rke2" {
 resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
     interpreter = ["bash", "-c"]
-    command = "aws s3 cp ${module.rke2.kubeconfig_path} rke2.yaml"
+    command = "aws s3 cp s3://${module.statestore.bucket}/rke2.yaml rke2.yaml"
   }
 
   depends_on = [
