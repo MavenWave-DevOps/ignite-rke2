@@ -47,7 +47,7 @@ module "rke2" {
 
   asg = { min : 1, max : 5, desired : var.servers }
 
-  min_elb_capacity = 1
+  min_elb_capacity = 0
 
   tags = merge({
     "Role" = "server"
