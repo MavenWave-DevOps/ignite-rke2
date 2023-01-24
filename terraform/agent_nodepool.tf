@@ -1,6 +1,7 @@
 
 module "agents" {
   source = "./modules/agent-nodepool"
+  count = var.use_rke2 ? 1 : 0
 
   name    = "generic"
   vpc_id  = local.vpc_id

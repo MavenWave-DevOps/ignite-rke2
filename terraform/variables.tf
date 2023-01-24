@@ -4,6 +4,11 @@ variable "region" {
   type    = string
 }
 
+variable "use_rke2" {
+  default = false
+  type = bool
+}
+
 variable "tags" {
   description = "Map of tags to all resources created"
   default     = {}
