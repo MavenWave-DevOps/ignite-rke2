@@ -25,7 +25,7 @@ resource "local_file" "ssh_pem" {
   file_permission = "0600"
 }
 
-module "servers" {
+module "rke2" {
   source = "./modules/nodepool"
   name = "${local.uname}-server"
 
