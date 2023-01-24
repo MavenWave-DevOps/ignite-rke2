@@ -135,3 +135,22 @@ variable "wait_for_capacity_timeout" {
   default = "10m"
 }
 
+variable "post_userdata" {
+  description = "Custom userdata to run immediately after rke2 node attempts to join cluster"
+  type = string
+  default = ""
+}
+
+variable "iam_permissions_boundary" {
+  description = "If provided, the IAM role created for the nodepool will be created with this permissions boundary attached."
+  type = string
+  default = null
+}
+
+variable "extra_block_device_mappings" {
+  description = "Used to specify additional block device mapping configs"
+  type = list(map(string))
+  default = [
+  ]
+}
+

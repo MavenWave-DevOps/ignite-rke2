@@ -12,6 +12,10 @@ locals {
     module.ignite-network.private_subnet_id,
   ]
 
+  ccm_tags = {
+    "kubernetes.io/cluster/${local.uname}" = "owned"
+  }
+
   tags = []
 }
 
