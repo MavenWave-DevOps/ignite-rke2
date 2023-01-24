@@ -31,7 +31,7 @@ resource "aws_iam_role_policy" "get_token" {
 
   name = "${local.name}-rke2-agent-aws-get-token"
   role = module.iam[count.index].role
-  policy = data.cluster_data.token.policy_document
+  policy = var.cluster_data.token.policy_document
 }
 
 module "init" {

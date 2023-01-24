@@ -11,7 +11,7 @@ resource "aws_launch_template" "template" {
   image_id = var.ami
   instance_type = var.instance_type
   user_data = var.userdata
-  vpc_security_group_ids = concat([aws_security_goup.sg.id], var.vpc_security_groups_ids)
+  vpc_security_group_ids = concat([resource.aws_security_goup.sg.id], var.vpc_security_groups_ids)
 
   block_device_mappings {
     device_name = lookup(var.block_device_mappings, "device_name", "/dev/sda1")
