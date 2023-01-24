@@ -116,26 +116,26 @@ variable "ssh_authorized_keys" {
 }
 
 variable "instance_type" {
-  type = string
-  default = "t3a.medium"
+  type        = string
+  default     = "t3a.medium"
   description = "Server pool instance type"
 }
 
 variable "extra_security_group_ids" {
   description = "List of additional secuirty group ids"
-  type = list(string)
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 variable "spot" {
   description = "Toggle spot requests for server pool"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "servers" {
   description = "Number of servers to create"
-  type = number
-  default = 1
+  type        = number
+  default     = 1
 }
 

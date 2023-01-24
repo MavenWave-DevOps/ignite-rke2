@@ -3,7 +3,7 @@ data "aws_iam_policy_document" "aws_ccm" {
   count = var.iam_instance_profile == "" && var.enable_ccm ? 1 : 0
 
   statement {
-    effect = "Allow"
+    effect    = "Allow"
     resources = ["*"]
     actions = [
       "ec2:DescribeInstances",

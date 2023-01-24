@@ -1,15 +1,15 @@
 
 module "init" {
   source = "./modules/userdata"
-  
-  server_url = module.cp_lb.dns
-  token_bucket = module.statestore.bucket
-  token_object = module.statestore.token_object
-  config = var.rke2_config
-  pre_userdata = var.pre_userdata
+
+  server_url    = module.cp_lb.dns
+  token_bucket  = module.statestore.bucket
+  token_object  = module.statestore.token_object
+  config        = var.rke2_config
+  pre_userdata  = var.pre_userdata
   post_userdata = var.post_userdata
-  ccm = var.enable_ccm
-  agent = false
+  ccm           = var.enable_ccm
+  agent         = false
 }
 
 data "template_cloudinit_config" "config" {
@@ -47,9 +47,9 @@ data "template_cloudinit_config" "config" {
 
 data "aws_iam_policy_document" "aws_required" {
   count = var.iam_instance_profile == "" ? 1 : 0
-  
+
   statement {
-    effect = "Allow"
+    effect    = "Allow"
     resources = ["*"]
     actions = [
       "autoscaling:DescribeAutoScalingGroups",
@@ -62,7 +62,7 @@ data "aws_iam_policy_document" "aws_ccm" {
   count = var.iam_instance_profile == "" && var.enable_ccm ? 1 : 0
 
   statement {
-    effect = "Allow"
+    effect    = "Allow"
     resources = ["*"]
     actions = [
 

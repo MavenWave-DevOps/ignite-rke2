@@ -11,9 +11,9 @@ module "iam" {
 
 resource "aws_iam_role_policy" "aws_required" {
   count = var.iam_instance_profile == "" ? 1 : 0
-  
-  name = "${local.uname}-rke2-server-aws-introspect"
-  role = module.iam[count.index].role
+
+  name   = "${local.uname}-rke2-server-aws-introspect"
+  role   = module.iam[count.index].role
   policy = data.aws_iam_policy_document.aws_required[count.index].json
 }
 
@@ -26,17 +26,17 @@ resource "aws_iam_role_policy" "aws_ccm" {
 }
 resource "aws_iam_role_policy" "get_token" {
   count = var.iam_instance_profile == "" ? 1 : 0
-  
-  name = "${local.uname}-rke2-server-get-token"
-  role = module.iam[count.index].role
+
+  name   = "${local.uname}-rke2-server-get-token"
+  role   = module.iam[count.index].role
   policy = module.statestore.token.policy_document
 }
 
 resource "aws_iam_role_policy" "put_kubeconfig" {
   count = var.iam_instance_profile == "" ? 1 : 0
-  
-  name = "${local.uname}-rke2-server-put-kubeconfig"
-  role = module.iam[count.index].role
+
+  name   = "${local.uname}-rke2-server-put-kubeconfig"
+  role   = module.iam[count.index].role
   policy = module.statestore.kubeconfig_put_policy
 }
 

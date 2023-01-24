@@ -17,10 +17,10 @@ locals {
   }
 
   cluster_data = {
-    name = local.uname
+    name       = local.uname
     server_url = module.cp_lb.dns
     cluster_sg = aws_security_group.cluster.id
-    token = module.statestore.token
+    token      = module.statestore.token
   }
 
   tags = {}

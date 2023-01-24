@@ -12,53 +12,53 @@ variable "subnets" {
 }
 
 variable "tags" {
-  type = map(string)
+  type    = map(string)
   default = {}
 }
 
 variable "userdata" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "instance_type" {
-  type = string
+  type    = string
   default = "t3.medium"
 }
 
 variable "ami" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "iam_instance_profile" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "health_check_type" {
-  type = string
+  type    = string
   default = "EC2"
 }
 
 variable "wait_for_capacity_timeout" {
   description = "How long Terraform should wait for ASG instances to be healthy before timing out."
-  type = string
-  default = "10m"
+  type        = string
+  default     = "10m"
 }
 
 variable "target_group_arns" {
-  type = list(string)
+  type    = list(string)
   default = []
 }
 
 variable "load_balancers" {
-  type = list(string)
+  type    = list(string)
   default = []
 }
 
 variable "vpc_security_group_ids" {
-  type = list(string)
+  type    = list(string)
   default = []
 }
 
@@ -66,7 +66,7 @@ variable "block_device_mappings" {
   type = map(string)
   default = {
     "size" = 30
-    type = "gp2"
+    type   = "gp2"
   }
 }
 
@@ -78,19 +78,19 @@ variable "extra_block_device_mappings" {
 
 variable "asg" {
   type = object({
-    min = number
-    max = number
+    min     = number
+    max     = number
     desired = number
   })
 }
 
 variable "spot" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "min_elb_capacity" {
-  type = number
+  type    = number
   default = null
 }
 

@@ -5,13 +5,13 @@ data "template_file" "init" {
   vars = {
     type = var.agent ? "agent" : "server"
 
-    server_url = var.server_url
+    server_url   = var.server_url
     token_bucket = var.token_bucket
     token_object = var.token_object
-    config = var.config
-    ccm = var.ccm
+    config       = var.config
+    ccm          = var.ccm
 
-    pre_userdata = var.pre_userdata
+    pre_userdata  = var.pre_userdata
     post_userdata = var.post_userdata
   }
 }
