@@ -60,7 +60,7 @@ data "aws_iam_policy_document" "aws_required" {
 
 data "aws_iam_policy_document" "aws_ccm" {
   count = var.iam_instance_profile == "" && var.enable_ccm ? 1 : 0
-  
+
   statement {
     effect = "Allow"
     resources = ["*"]
@@ -120,7 +120,7 @@ data "aws_iam_policy_document" "aws_ccm" {
       "elasticloadbalancing:DeregisterTargets",
       "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
       "iam:CreateServiceLinkedRole",
-      "kms:DescribeKey"
+      "kms:DescribeKey",
     ]
   }
 }
