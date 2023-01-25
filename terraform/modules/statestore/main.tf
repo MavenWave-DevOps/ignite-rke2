@@ -33,6 +33,18 @@ resource "aws_s3_bucket_object" "token" {
   ]
 }
 
+resource "aws_s3_bucket_object" "kubeconfig" {
+  bucket = aws_s3_bucket.bucket.id
+  key = "kubeconfig"
+  content_type = "text/plain"
+  content = ""
+  server_side_encryption = "aws:kms"
+
+  depends_on = [
+    resource.aws_s3_bucket.bucket,
+  ]
+}
+
 data "aws_iam_policy_document" "getter" {
   statement {
     effect  = "Allow"

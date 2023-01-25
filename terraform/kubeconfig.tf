@@ -1,8 +1,8 @@
-
-resource "local_file" "yaml" {
-  content = ""
-  filename = "${path.module}/rke2.yaml"
-}
+#
+# resource "local_file" "yaml" {
+#   content = ""
+#   filename = "${path.module}/rke2.yaml"
+# }
 
 resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
