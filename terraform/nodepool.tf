@@ -83,3 +83,12 @@ output "rke2" {
   value = module.rke2
 }
 
+resource "aws_security_group_rule" "quickstart_ssh" {
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  security_group_id = module.rke2.cluster_data.cluster_sg
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+
