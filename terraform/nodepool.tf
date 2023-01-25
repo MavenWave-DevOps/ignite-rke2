@@ -79,7 +79,7 @@ module "rke2" {
 #   tags = local.tags
 # }
 
-# output "rke2" {
-#   value = module.rke2
-# }
+output "rke2" {
+  value = module.rke2
+}
 
