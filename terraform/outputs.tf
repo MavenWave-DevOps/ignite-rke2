@@ -3,10 +3,10 @@ output "kubeconfig_path" {
   value = "s3://${module.statestore.bucket}/rke2.yaml"
 }
 
-output "kubeconfig" {
-  value = resource.null_resource.kubeconfig
-}
-
+# output "kubeconfig" {
+#   value = resource.null_resource.kubeconfig
+# }
+#
 # output "rke2" {
 #   value = module.rke2
 # }

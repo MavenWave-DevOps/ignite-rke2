@@ -5,7 +5,7 @@ variable "region" {
 }
 
 variable "use_rke2" {
-  default = true
+  default = false
   type = bool
 }
 
