@@ -1,18 +1,18 @@
 
-data "aws_ami" "rhel8" {
-  most_recent = true
-  # owners = ["219670896067"]
-
-  filter {
-    name   = "name"
-    values = ["RHEL-8*"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-}
+# data "aws_ami" "rhel8" {
+#   most_recent = true
+#   # owners = ["219670896067"]
+#
+#   filter {
+#     name   = "name"
+#     values = ["RHEL-8*"]
+#   }
+#
+#   filter {
+#     name   = "architecture"
+#     values = ["x86_64"]
+#   }
+# }
 
 resource "tls_private_key" "ssh" {
   algorithm = "RSA"
@@ -33,7 +33,7 @@ module "rke2" {
   vpc_id  = local.vpc_id
   subnets = local.subnets
 
-  ami                       = data.aws_ami.rhel8.image_id
+  ami                       = data.aws_ami.ubuntu.image_id
   instance_type             = var.instance_type
   block_device_mappings     = var.block_device_mappings
   vpc_security_group_ids    = concat([aws_security_group.server.id, aws_security_group.cluster.id], var.extra_security_group_ids)
