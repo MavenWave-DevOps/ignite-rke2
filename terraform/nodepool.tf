@@ -75,14 +75,14 @@ module "rke2" {
 #   - "name=server"
 #   - "os=rhel8"
 # EOT
-#   
+   
 #   tags = local.tags
 # }
-#
+
 # output "rke2" {
 #   value = module.rke2
 # }
-#
+
 resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
     interpreter = ["bash", "-c"]
