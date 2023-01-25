@@ -35,8 +35,8 @@ resource "aws_s3_bucket_object" "token" {
 
 resource "aws_s3_bucket_object" "kubeconfig" {
   bucket = aws_s3_bucket.bucket.id
-  key = "kubeconfig"
-  content_type = "text/yaml"
+  key = "rke2"
+  content_type = "application/x-yaml"
   content = ""
   server_side_encryption = "aws:kms"
 
