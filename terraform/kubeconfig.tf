@@ -14,7 +14,7 @@ resource "aws_security_group_rule" "quickstart_ssh" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  security_group_id = var.cluster_data.cluster_sg
+  security_group_id = local.cluster_data.cluster_sg
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
 }
