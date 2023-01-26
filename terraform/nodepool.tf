@@ -36,7 +36,7 @@ module "rke2" {
   ami                       = data.aws_ami.ubuntu.image_id
   instance_type             = var.instance_type
   block_device_mappings     = var.block_device_mappings
-  vpc_security_group_ids    = concat([aws_security_group.server.id, aws_security_group.cluster.id], var.extra_security_group_ids)
+  vpc_security_group_ids    = concat([aws_security_group.server.id, aws_security_group.cluster.id, module.cp_lb.security_group], var.extra_security_group_ids)
   spot                      = var.spot
   load_balancers            = [module.cp_lb.name]
   wait_for_capacity_timeout = var.wait_for_capacity_timeout
