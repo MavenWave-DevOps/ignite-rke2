@@ -5,7 +5,7 @@ variable "region" {
 }
 
 variable "use_rke2" {
-  default = false
+  default = true
   type = bool
 }
 
@@ -35,7 +35,7 @@ variable "controlplane_enable_cross_zone_load_balancing" {
 
 variable "controlplane_internal" {
   description = "Toggle between public or private control plane load balancer"
-  default     = true
+  default     = false
   type        = bool
 }
 
@@ -141,6 +141,6 @@ variable "spot" {
 variable "servers" {
   description = "Number of servers to create"
   type        = number
-  default     = 1
+  default     = 2
 }
 
