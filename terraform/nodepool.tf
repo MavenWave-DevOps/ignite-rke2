@@ -46,7 +46,7 @@ module "rke2" {
   userdata             = data.template_cloudinit_config.config.rendered
   iam_instance_profile = var.iam_instance_profile == "" ? module.iam[0].iam_instance_profile : var.iam_instance_profile
 
-  asg = { min : 2, max : 5, desired : var.servers }
+  asg = { min : 1, max : 5, desired : var.servers }
 
   min_elb_capacity = 1
 
