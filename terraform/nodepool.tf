@@ -42,6 +42,8 @@ module "rke2" {
   wait_for_capacity_timeout = var.wait_for_capacity_timeout
   # ssh_authorized_keys = [tls_private_key.ssh.public_key_openssh]
   # controlplane_internal = false
+  metadata_options            = var.metadata_options
+  associate_public_ip_address = var.associate_public_ip_address 
 
   userdata             = data.template_cloudinit_config.config.rendered
   iam_instance_profile = var.iam_instance_profile == "" ? module.iam[0].iam_instance_profile : var.iam_instance_profile

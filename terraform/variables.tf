@@ -144,3 +144,19 @@ variable "servers" {
   default     = 2
 }
 
+variable "metadata_options" {
+  type = map(any)
+  default = {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required" # IMDS-v2
+    http_put_response_hop_limit = 2          # allow pods to use IMDS as well
+    instance_metadata_tags      = "disabled"
+  }
+  description = "Instance Metadata Options"
+}
+
+variable "associate_public_ip_address" {
+  default = false
+  type    = bool
+}
+
