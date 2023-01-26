@@ -26,8 +26,9 @@ resource "local_file" "ssh_pem" {
 }
 
 module "rke2" {
-  source = "./modules/nodepool"
   count = var.use_rke2 ? 1 : 0
+  source = "./modules/nodepool"
+
   name   = "${local.uname}-server"
 
   vpc_id  = local.vpc_id

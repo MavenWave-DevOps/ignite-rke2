@@ -1,10 +1,14 @@
 
+
 resource "aws_security_group" "sg" {
   name        = "${var.name}-rke2-nodepool"
   vpc_id      = var.vpc_id
   description = "${var.name} node pool"
   tags        = merge({}, var.tags)
 }
+
+
+
 
 resource "aws_launch_template" "template" {
   name                   = "${var.name}-rke2-nodepool"
@@ -60,6 +64,9 @@ resource "aws_launch_template" "template" {
   tags = merge({}, var.tags)
 }
 
+
+
+
 resource "aws_autoscaling_group" "asg" {
   name                = "${var.name}-rke2-nodepool"
   vpc_zone_identifier = var.subnets
@@ -67,6 +74,7 @@ resource "aws_autoscaling_group" "asg" {
   min_size         = var.asg.min
   max_size         = var.asg.max
   desired_capacity = var.asg.desired
+
 
   health_check_type         = var.health_check_type
   wait_for_capacity_timeout = var.wait_for_capacity_timeout
@@ -119,3 +127,4 @@ resource "aws_autoscaling_group" "asg" {
     ignore_changes = [load_balancers, target_group_arns]
   }
 }
+

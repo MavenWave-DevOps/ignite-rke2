@@ -1,6 +1,7 @@
 
 module "cp_lb" {
   source  = "./modules/elb"
+  count = var.use_rke2 ? 1 : 0
   name    = local.uname
   vpc_id  = local.vpc_id
   subnets = local.subnets

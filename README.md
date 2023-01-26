@@ -1,5 +1,5 @@
-# RKE2 on AWS
-RKE2 is a k8s distribution intended for government entity use. 
+# Ignite Rancher
+Rancher is a tool to use for cluster management. RKE2 is a k8s distribution intended for government entity use. 
 
 ## Description
 This repository is a guide to setting up RKE2 on AWS. RKE2 is flexible for deployment method and can be tailored to best suit you and your needs. This repository is a stepping stone to introduce your own workflow to meet your needs.
