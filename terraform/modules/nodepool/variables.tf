@@ -94,3 +94,13 @@ variable "min_elb_capacity" {
   default = null
 }
 
+variable "metadata_options" {
+  type        = map(any)
+  description = "Instance Metadata Options"
+}
+
+variable "associate_public_ip_address" {
+  default = false
+  type    = bool
+}
+
