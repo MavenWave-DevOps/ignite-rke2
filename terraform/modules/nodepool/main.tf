@@ -28,6 +28,7 @@ resource "aws_launch_template" "template" {
     associate_public_ip_address = var.associate_public_ip_address
     delete_on_termination       = true
     security_groups             = var.vpc_security_group_ids
+    # aws_autoscaling_group       - aws_autoscaling_group.asg.ids
   }
 
   block_device_mappings {
@@ -67,64 +68,64 @@ resource "aws_launch_template" "template" {
 
 
 
-# resource "aws_autoscaling_group" "asg" {
-#   name                = "${var.name}-rke2-nodepool"
-#   vpc_zone_identifier = var.subnets
-#
-#   min_size         = var.asg.min
-#   max_size         = var.asg.max
-#   desired_capacity = var.asg.desired
-#
-#
-#   health_check_type         = var.health_check_type
-#   wait_for_capacity_timeout = var.wait_for_capacity_timeout
-#   target_group_arns         = var.target_group_arns
-#   load_balancers            = var.load_balancers
-#
-#   min_elb_capacity = var.min_elb_capacity
-#
-#   dynamic "launch_template" {
-#     for_each = var.spot ? [] : ["spot"]
-#
-#     content {
-#       id      = aws_launch_template.template.id
-#       version = "$Latest"
-#     }
-#   }
-#
-#   dynamic "mixed_instances_policy" {
-#     for_each = var.spot ? ["spot"] : []
-#
-#     content {
-#       instances_distribution {
-#         on_demand_base_capacity                  = 0
-#         on_demand_percentage_above_base_capacity = 0
-#       }
-#
-#       launch_template {
-#         launch_template_specification {
-#           launch_template_id   = aws_launch_template.template.id
-#           launch_template_name = aws_launch_template.template.name
-#           version              = "$Latest"
-#         }
-#       }
-#     }
-#   }
-#
-#   dynamic "tag" {
-#     for_each = merge({
-#       "Name" = "${var.name}-rke2-nodepool"
-#     }, var.tags)
-#
-#     content {
-#       key                 = tag.key
-#       value               = tag.value
-#       propagate_at_launch = true
-#     }
-#   }
-#
-#   lifecycle {
-#     ignore_changes = [load_balancers, target_group_arns]
-#   }
-# }
+resource "aws_autoscaling_group" "asg" {
+  name                = "${var.name}-rke2-nodepool"
+  vpc_zone_identifier = var.subnets
+
+  min_size         = var.asg.min
+  max_size         = var.asg.max
+  desired_capacity = var.asg.desired
+
+
+  health_check_type         = var.health_check_type
+  wait_for_capacity_timeout = var.wait_for_capacity_timeout
+  target_group_arns         = var.target_group_arns
+  load_balancers            = var.load_balancers
+
+  min_elb_capacity = var.min_elb_capacity
+
+  dynamic "launch_template" {
+    for_each = var.spot ? [] : ["spot"]
+
+    content {
+      id      = aws_launch_template.template.id
+      version = "$Latest"
+    }
+  }
+
+  dynamic "mixed_instances_policy" {
+    for_each = var.spot ? ["spot"] : []
+
+    content {
+      instances_distribution {
+        on_demand_base_capacity                  = 0
+        on_demand_percentage_above_base_capacity = 0
+      }
+
+      launch_template {
+        launch_template_specification {
+          launch_template_id   = aws_launch_template.template.id
+          launch_template_name = aws_launch_template.template.name
+          version              = "$Latest"
+        }
+      }
+    }
+  }
+
+  dynamic "tag" {
+    for_each = merge({
+      "Name" = "${var.name}-rke2-nodepool"
+    }, var.tags)
+
+    content {
+      key                 = tag.key
+      value               = tag.value
+      propagate_at_launch = true
+    }
+  }
+
+  lifecycle {
+    ignore_changes = [load_balancers, target_group_arns]
+  }
+}
 
