@@ -27,7 +27,7 @@ resource "aws_launch_template" "template" {
   network_interfaces {
     associate_public_ip_address = var.associate_public_ip_address
     delete_on_termination       = true
-    security_groups             = var.vpc_security_group_ids
+    # security_groups             = var.vpc_security_group_ids
     # aws_autoscaling_group       - aws_autoscaling_group.asg.ids
   }
 
