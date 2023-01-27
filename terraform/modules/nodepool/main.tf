@@ -15,7 +15,7 @@ resource "aws_launch_template" "template" {
   image_id               = var.ami
   instance_type          = var.instance_type
   user_data              = var.userdata
-  vpc_security_group_ids = concat([aws_security_group.sg.id], var.vpc_security_group_ids)
+  # vpc_security_group_ids = concat([aws_security_group.sg.id], var.vpc_security_group_ids)
 
   metadata_options {
     http_endpoint               = var.metadata_options["http_endpoint"]
@@ -27,7 +27,7 @@ resource "aws_launch_template" "template" {
   network_interfaces {
     associate_public_ip_address = var.associate_public_ip_address
     delete_on_termination       = true
-    # security_groups             = var.vpc_security_group_ids
+    security_groups             = var.vpc_security_group_ids
     # aws_autoscaling_group       - aws_autoscaling_group.asg.ids
   }
 
