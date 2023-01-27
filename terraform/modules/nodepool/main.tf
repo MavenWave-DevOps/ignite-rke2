@@ -28,7 +28,6 @@ resource "aws_launch_template" "template" {
     associate_public_ip_address = var.associate_public_ip_address
     delete_on_termination       = true
     security_groups             = var.vpc_security_group_ids
-    # aws_autoscaling_group       - aws_autoscaling_group.asg.ids
   }
 
   block_device_mappings {
@@ -69,7 +68,7 @@ resource "aws_launch_template" "template" {
 
 
 resource "aws_autoscaling_group" "asg" {
-  name                = "${var.name}-rke2-nodepool"
+  name                = "${var.name}-rke2-nodepool-asg"
   vpc_zone_identifier = var.subnets
 
   min_size         = var.asg.min
